@@ -170,6 +170,7 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.2)
+    mini_portile2 (2.7.1)
     minitest (5.15.0)
     msgpack (1.4.2)
     nenv (0.3.0)
@@ -318,7 +319,11 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+<<<<<<< HEAD
   x86_64-linux
+=======
+  ruby
+>>>>>>> f473556a2ee0893087aacf3d7a2d7d0883fa885b
 
 DEPENDENCIES
   airbrake
@@ -359,4 +364,4 @@ DEPENDENCIES
   webdrivers (~> 3.0)
 
 BUNDLED WITH
-   2.3.4
+   1.17.2
