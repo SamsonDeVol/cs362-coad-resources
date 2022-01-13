@@ -27,6 +27,14 @@ gem install bundler
 bundle install
 ```
 
+Next set up the loacl environment by:
+
+```
+cp .env.example .env
+```
+
+Then, edit the file to include the DEFAULT_PASSWORD, ADMINS, TEST_USER_EMAIL, TEST_USER_PASSWORD
+
 Next, set up the database:
 
 ```
