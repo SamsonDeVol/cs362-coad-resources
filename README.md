@@ -41,11 +41,8 @@ Next, set up the database:
 rails db:setup
 ```
 
-If you want, you can create some seed data in the database:
+This will implicitily run the rails db:seed command and populate the site
 
-```
-rails db:seed
-```
 
 Start the app:
 
