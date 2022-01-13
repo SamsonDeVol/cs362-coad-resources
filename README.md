@@ -122,4 +122,4 @@ Recaptcha
 ![erd](public/documentation/erd.jpg?raw=true)
 
 
-&copy; 2020 Samson DeVol, James Martinez, Ryder McDowell. All rights reserved.
+&copy; 2020 Samson DeVol, James Martinez, Ryder McDowell, Micah Stalberg. All rights reserved.
