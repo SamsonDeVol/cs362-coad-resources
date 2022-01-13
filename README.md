@@ -27,7 +27,7 @@ gem install bundler
 bundle install
 ```
 
-Next set up the loacl environment by:
+Next set up the local environment by:
 
 ```
 cp .env.example .env
