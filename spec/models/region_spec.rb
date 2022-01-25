@@ -18,4 +18,9 @@ RSpec.describe Region, type: :model do
       end
     end
 
+    describe "#to_s" do
+      it "returns the name" do
+        name = "Deschutes"
+      region = Region.new(name: name)
+      expect(region.to_s).to eq(name)
 end
