@@ -32,4 +32,13 @@ RSpec.describe Region, type: :model do
         expect(region.name).to eq('Unspecified')
       end
     end
+
+    describe "validations" do
+      it "cannot have a blank name" do
+        region = Region.new(name: 'The Dogg Pound')
+        expect(region).to be_valid
+        region = Region.new(name: nil)
+        expect(region).to_not be_valid
+      end
+    end
 end
