@@ -43,6 +43,15 @@ RSpec.describe Region, type: :model do
       it "cannot have a name longer than 255 chars" do
         Region.new.should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
       end    
-        
+
+      it "must have a unique name" do
+        duplicate_name = "Dogg Pound"
+        region = Region.create!(name: duplicate_name)
+        duplicate_region = Region.new(name: "Kurupt")
+        duplicate_region.should be_valid
+        duplicate_region.name = duplicate_name
+        duplicate_region.should_not be_valid    
+      end
+      
     end
 end
