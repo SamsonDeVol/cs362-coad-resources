@@ -24,12 +24,23 @@ RSpec.describe Organization, type: :model do
   describe "attributes" do
     
     it "has a name" do
-      Organization.new.should respond_to(:name)
+      organization.should respond_to(:name)
+    end
+
+<<<<<<< HEAD
+    it "has transportation" do 
+      organization.should respond_to(:transportation)
+    end
+=======
+    it "has a status" do
+      organization.should respond_to(:status)
     end
 
     it "has transportation" do 
       organization.should respond_to(:transportation)
     end
+
+>>>>>>> 13_Organization_Spec
   end
     
   
