@@ -18,7 +18,12 @@ RSpec.describe Organization, type: :model do
   }
 
   it "exists" do 
-   organization.should be_valid
+    Organization.new
   end
 
+  describe "attributes" do
+    it "has transportation" do 
+      organization.should respond_to(:transportation)
+    end
+  end
 end
