@@ -42,12 +42,28 @@ RSpec.describe Organization, type: :model do
       organization.should respond_to(:description)
     end
 
-    it "has a title" do
-      organization.should respond_to(:title)
+    it "has a rejection_reason" do
+      organization.should respond_to(:rejection_reason)
+    end
+
+    it "has a liability_insurance" do
+      organization.should respond_to(:liability_insurance)
+    end
+
+    it "has an primary_name" do
+      organization.should respond_to(:primary_name)
+    end
+
+    it "has a secondary_name" do
+      organization.should respond_to(:secondary_name)
     end
 
     it "has secondary_phone" do  
       organization.should respond_to(:secondary_phone)
+    end
+
+    it "has a title" do
+      organization.should respond_to(:title)
     end
 
     it "has transportation" do 
