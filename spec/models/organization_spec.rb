@@ -30,6 +30,18 @@ RSpec.describe Organization, type: :model do
       organization.should respond_to(:status)
     end
 
+    it "has a phone" do
+      organization.should respond_to(:phone)
+    end
+
+    it "has an email" do
+      organization.should respond_to(:email)
+    end
+
+    it "has a description" do
+      organization.should respond_to(:description)
+    end
+
     it "has a title" do
       organization.should respond_to(:title)
     end
