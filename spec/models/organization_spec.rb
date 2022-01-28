@@ -16,10 +16,6 @@ RSpec.describe Organization, type: :model do
       transportation: 1)
   }
 
-  it "exists" do 
-    Organization.new
-  end
-
   describe "attributes" do
     it "has a name" do
       organization.should respond_to(:name)
