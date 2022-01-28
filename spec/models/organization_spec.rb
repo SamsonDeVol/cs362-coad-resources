@@ -34,7 +34,7 @@ RSpec.describe Organization, type: :model do
       organization.should respond_to(:title)
     end
 
-    it "has secondary_phone" do 
+    it "has secondary_phone" do  
       organization.should respond_to(:secondary_phone)
     end
 
