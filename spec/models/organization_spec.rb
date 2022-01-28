@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe Organization, type: :model do
 
   let (:organization) {
@@ -70,4 +69,11 @@ RSpec.describe Organization, type: :model do
       organization.should respond_to(:transportation)
     end
   end
+
+  describe "associations" do
+    it "has many tickets" do
+      organization.should have_many(:tickets)
+    end
+  end
+
 end
