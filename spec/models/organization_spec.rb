@@ -34,6 +34,10 @@ RSpec.describe Organization, type: :model do
       organization.should respond_to(:phone)
     end
 
+    it "has an email" do
+      organization.should respond_to(:email)
+    end
+
     it "has a title" do
       organization.should respond_to(:title)
     end
