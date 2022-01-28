@@ -22,8 +22,21 @@ RSpec.describe Organization, type: :model do
   end
 
   describe "attributes" do
+
+    it "has a name" do
+      organization.should respond_to(:name)
+    end
+
     it "has transportation" do 
       organization.should respond_to(:transportation)
+    end
+
+    it "has a title" do
+      organization.should respond_to(:title)
+    end
+
+    it "has secondary_phone" do 
+      organization.should respond_to(:secondary_phone)
     end
   end
 end
