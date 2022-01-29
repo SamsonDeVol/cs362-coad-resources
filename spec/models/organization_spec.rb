@@ -121,6 +121,12 @@ RSpec.describe Organization, type: :model do
       organization.primary_name = nil
       expect(organization).to be_invalid
     end
+
+    it "is invalid without a secondary name" do
+      expect(organization).to be_valid
+      organization.secondary_name = nil
+      expect(organization).to be_invalid
+    end
   end
 
 
