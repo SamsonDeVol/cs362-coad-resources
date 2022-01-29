@@ -119,5 +119,9 @@ RSpec.describe Organization, type: :model do
     it "is invalid without a secondary phone" do
       expect(organization).to validate_presence_of(:secondary_phone)
     end
+
+    it "cannot have an email longer than 255 chars" do
+      organization.should validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)
+    end
   end
 end
