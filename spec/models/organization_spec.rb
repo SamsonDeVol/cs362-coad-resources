@@ -91,6 +91,10 @@ RSpec.describe Organization, type: :model do
     end
   end
 
-
+  describe "#to_s" do
+    it "returns the name" do
+      organization.to_s.should eq(organization.name)
+    end
+  end
 
 end
