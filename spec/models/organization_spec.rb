@@ -74,6 +74,10 @@ RSpec.describe Organization, type: :model do
     it "has many tickets" do
       organization.should have_many(:tickets)
     end
+
+    it "has and belongs to many resource categories" do 
+      organization.should have_and_belong_to_many(:resource_categories)
+    end
   end
 
 end
