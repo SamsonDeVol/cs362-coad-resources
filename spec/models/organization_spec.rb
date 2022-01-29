@@ -96,7 +96,16 @@ RSpec.describe Organization, type: :model do
       organization.to_s.should eq(organization.name)
     end
   end
-  
+
+  describe "#approve" do
+    it "sets status to approved" do
+    organization.status = "rejected"
+    organization.status.should eq("rejected")
+    organization.approve
+    organization.status.should eq("approved")
+    end
+  end
+
   describe "validations" do
     it "is invalid without an email" do
       expect(organization).to validate_presence_of(:email)
