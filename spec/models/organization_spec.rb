@@ -64,6 +64,17 @@ RSpec.describe Organization, type: :model do
     it "has transportation" do 
       organization.should respond_to(:transportation)
     end
+
+    it "has agreements one through eight" do
+      organization.should respond_to(:agreement_one)
+      organization.should respond_to(:agreement_two)
+      organization.should respond_to(:agreement_three)
+      organization.should respond_to(:agreement_four)
+      organization.should respond_to(:agreement_five)
+      organization.should respond_to(:agreement_six)
+      organization.should respond_to(:agreement_seven)
+      organization.should respond_to(:agreement_eight)
+    end
   end
 
   describe "associations" do
@@ -79,5 +90,7 @@ RSpec.describe Organization, type: :model do
       organization.should have_and_belong_to_many(:resource_categories)
     end
   end
+
+
 
 end
