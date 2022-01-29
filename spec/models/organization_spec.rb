@@ -115,6 +115,12 @@ RSpec.describe Organization, type: :model do
       organization.status = nil
       expect(organization).to be_invalid
     end
+
+    it "is invalid without a primary name" do
+      expect(organization).to be_valid
+      organization.primary_name = nil
+      expect(organization).to be_invalid
+    end
   end
 
 
