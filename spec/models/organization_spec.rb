@@ -103,6 +103,12 @@ RSpec.describe Organization, type: :model do
       organization.name = nil
       expect(organization).to be_invalid
     end
+
+    it "is invalid without a phone" do
+      expect(organization).to be_valid
+      organization.phone = nil
+      expect(organization).to be_invalid
+    end
   end
 
 
