@@ -91,6 +91,13 @@ RSpec.describe Organization, type: :model do
     end
   end
 
+  describe "validations" do
+    it "is invalid without an email" do
+      expect(organization).to be_valid
+      organization.email = nil
+      expect(organization).to be_invalid
+    end
+  end
 
 
 end
