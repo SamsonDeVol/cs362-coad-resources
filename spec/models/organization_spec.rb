@@ -127,6 +127,12 @@ RSpec.describe Organization, type: :model do
       organization.secondary_name = nil
       expect(organization).to be_invalid
     end
+
+    it "is invalid without a secondary phone" do
+      expect(organization).to be_valid
+      organization.secondary_phone = nil
+      expect(organization).to be_invalid
+    end
   end
 
 
