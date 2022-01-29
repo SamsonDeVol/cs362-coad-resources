@@ -45,7 +45,7 @@ RSpec.describe Organization, type: :model do
       organization.should respond_to(:liability_insurance)
     end
 
-    it "has an primary_name" do
+    it "has a primary_name" do
       organization.should respond_to(:primary_name)
     end
 
@@ -95,6 +95,12 @@ RSpec.describe Organization, type: :model do
     it "is invalid without an email" do
       expect(organization).to be_valid
       organization.email = nil
+      expect(organization).to be_invalid
+    end
+
+    it "is invalid without a name" do
+      expect(organization).to be_valid
+      organization.name = nil
       expect(organization).to be_invalid
     end
   end
