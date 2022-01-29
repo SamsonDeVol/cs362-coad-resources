@@ -109,6 +109,12 @@ RSpec.describe Organization, type: :model do
       organization.phone = nil
       expect(organization).to be_invalid
     end
+
+    it "is invalid without a status" do
+      expect(organization).to be_valid
+      organization.status = nil
+      expect(organization).to be_invalid
+    end
   end
 
 
