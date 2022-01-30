@@ -128,5 +128,9 @@ RSpec.describe Organization, type: :model do
       organization.should allow_value('fake@email.com').for(:email).on(:create)
       organization.should_not allow_value('fakeemail.com').for(:email).on(:create)
     end
+
+    it "cannot have a non unique email" do 
+      organization.should validate_uniqueness_of(:email).case_insensitive
+    end
   end
 end
