@@ -140,5 +140,9 @@ RSpec.describe Organization, type: :model do
     it "cannot have a non unique name" do 
       organization.should validate_uniqueness_of(:name).case_insensitive
     end
+
+    it "cannot have an description longer than 1020 chars" do
+      organization.should validate_length_of(:description).is_at_most(1020).on(:create)
+    end
   end
 end
