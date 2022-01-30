@@ -18,146 +18,146 @@ RSpec.describe Organization, type: :model do
 
   describe "attributes" do
     it "has a name" do
-      organization.should respond_to(:name)
+      expect(organization).to respond_to(:name)
     end
 
     it "has a status" do
-      organization.should respond_to(:status)
+      expect(organization).to respond_to(:status)
     end
 
     it "has a phone" do
-      organization.should respond_to(:phone)
+      expect(organization).to respond_to(:phone)
     end
 
     it "has an email" do
-      organization.should respond_to(:email)
+      expect(organization).to respond_to(:email)
     end
 
     it "has a description" do
-      organization.should respond_to(:description)
+      expect(organization).to respond_to(:description)
     end
 
     it "has a rejection_reason" do
-      organization.should respond_to(:rejection_reason)
+      expect(organization).to respond_to(:rejection_reason)
     end
 
     it "has a liability_insurance" do
-      organization.should respond_to(:liability_insurance)
+      expect(organization).to respond_to(:liability_insurance)
     end
 
     it "has a primary_name" do
-      organization.should respond_to(:primary_name)
+      expect(organization).to respond_to(:primary_name)
     end
 
     it "has a secondary_name" do
-      organization.should respond_to(:secondary_name)
+      expect(organization).to respond_to(:secondary_name)
     end
 
     it "has secondary_phone" do  
-      organization.should respond_to(:secondary_phone)
+      expect(organization).to respond_to(:secondary_phone)
     end
 
     it "has a title" do
-      organization.should respond_to(:title)
+      expect(organization).to respond_to(:title)
     end
 
     it "has transportation" do 
-      organization.should respond_to(:transportation)
+      expect(organization).to respond_to(:transportation)
     end
 
     it "has agreements one through eight" do
-      organization.should respond_to(:agreement_one)
-      organization.should respond_to(:agreement_two)
-      organization.should respond_to(:agreement_three)
-      organization.should respond_to(:agreement_four)
-      organization.should respond_to(:agreement_five)
-      organization.should respond_to(:agreement_six)
-      organization.should respond_to(:agreement_seven)
-      organization.should respond_to(:agreement_eight)
+      expect(organization).to respond_to(:agreement_one)
+      expect(organization).to respond_to(:agreement_two)
+      expect(organization).to respond_to(:agreement_three)
+      expect(organization).to respond_to(:agreement_four)
+      expect(organization).to respond_to(:agreement_five)
+      expect(organization).to respond_to(:agreement_six)
+      expect(organization).to respond_to(:agreement_seven)
+      expect(organization).to respond_to(:agreement_eight)
     end
   end
 
   describe "associations" do
     it "has many users" do
-      organization.should have_many(:users)
+      expect(organization).to have_many(:users)
     end
     
     it "has many tickets" do
-      organization.should have_many(:tickets)
+      expect(organization).to have_many(:tickets)
     end
 
     it "has and belongs to many resource categories" do 
-      organization.should have_and_belong_to_many(:resource_categories)
+      expect(organization).to have_and_belong_to_many(:resource_categories)
     end
   end
 
   describe "#to_s" do
     it "returns the name" do
-      organization.to_s.should eq(organization.name)
+      expect(organization.to_s).to eq(organization.name)
     end
   end
 
   describe "#approve" do
     it "sets status to approved" do
     organization.status = "rejected"
-    organization.status.should eq("rejected")
+    expect(organization.status).to eq("rejected")
     organization.approve
-    organization.status.should eq("approved")
+    expect(organization.status).to eq("approved")
     end
   end
 
   describe "validations" do
     it "is invalid without an email" do
-      organization.should validate_presence_of(:email)
+      expect(organization).to validate_presence_of(:email)
     end
 
     it "is invalid without a name" do
-      organization.should validate_presence_of(:name)
+      expect(organization).to validate_presence_of(:name)
     end
 
     it "is invalid without a phone" do
-      organization.should validate_presence_of(:phone)
+      expect(organization).to validate_presence_of(:phone)
     end
 
     it "is invalid without a status" do
-      organization.should validate_presence_of(:status)
+      expect(organization).to validate_presence_of(:status)
     end
 
     it "is invalid without a primary name" do
-      organization.should validate_presence_of(:primary_name)
+      expect(organization).to validate_presence_of(:primary_name)
     end
 
     it "is invalid without a secondary name" do
-      organization.should validate_presence_of(:secondary_name)
+      expect(organization).to validate_presence_of(:secondary_name)
     end
 
     it "is invalid without a secondary phone" do
-      organization.should validate_presence_of(:secondary_phone)
+      expect(organization).to validate_presence_of(:secondary_phone)
     end
 
     it "cannot have an email longer than 255 chars" do
-      organization.should validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)
+      expect(organization).to validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)
     end
 
     it "cannot have an invalid email format" do
-      organization.should allow_value('fake@email.com').for(:email).on(:create)
-      organization.should_not allow_value('fakeemail.com').for(:email).on(:create)
+      expect(organization).to allow_value('fake@email.com').for(:email).on(:create)
+      expect(organization).to_not allow_value('fakeemail.com').for(:email).on(:create)
     end
 
     it "cannot have a non unique email" do 
-      organization.should validate_uniqueness_of(:email).case_insensitive
+      expect(organization).to validate_uniqueness_of(:email).case_insensitive
     end
 
     it "cannot have an name longer than 255 chars" do
-      organization.should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+      expect(organization).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
     end
 
     it "cannot have a non unique name" do 
-      organization.should validate_uniqueness_of(:name).case_insensitive
+      expect(organization).to validate_uniqueness_of(:name).case_insensitive
     end
 
     it "cannot have an description longer than 1020 chars" do
-      organization.should validate_length_of(:description).is_at_most(1020).on(:create)
+      expect(organization).to validate_length_of(:description).is_at_most(1020).on(:create)
     end
   end
 end
