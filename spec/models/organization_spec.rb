@@ -108,35 +108,56 @@ RSpec.describe Organization, type: :model do
 
   describe "validations" do
     it "is invalid without an email" do
-      expect(organization).to validate_presence_of(:email)
+      organization.should validate_presence_of(:email)
     end
 
     it "is invalid without a name" do
-      expect(organization).to validate_presence_of(:name)
+      organization.should validate_presence_of(:name)
     end
 
     it "is invalid without a phone" do
-      expect(organization).to validate_presence_of(:phone)
+      organization.should validate_presence_of(:phone)
     end
 
     it "is invalid without a status" do
-      expect(organization).to validate_presence_of(:status)
+      organization.should validate_presence_of(:status)
     end
 
     it "is invalid without a primary name" do
-      expect(organization).to validate_presence_of(:primary_name)
+      organization.should validate_presence_of(:primary_name)
     end
 
     it "is invalid without a secondary name" do
-      expect(organization).to validate_presence_of(:secondary_name)
+      organization.should validate_presence_of(:secondary_name)
     end
 
     it "is invalid without a secondary phone" do
-      expect(organization).to validate_presence_of(:secondary_phone)
+      organization.should validate_presence_of(:secondary_phone)
     end
 
     it "cannot have an email longer than 255 chars" do
       organization.should validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)
+    end
+
+    it "cannot have an invalid email format" do
+      organization.should allow_value('fake@email.com').for(:email).on(:create)
+      organization.should_not allow_value('fakeemail.com').for(:email).on(:create)
+    end
+
+    it "cannot have a non unique email" do 
+      organization.should validate_uniqueness_of(:email).case_insensitive
+    end
+
+    it "cannot have an name longer than 255 chars" do
+      organization.should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+    end
+
+    it "cannot have a non unique name" do 
+      organization.should validate_uniqueness_of(:name).case_insensitive
+    end
+
+    it "cannot have an description longer than 1020 chars" do
+      organization.should validate_length_of(:description).is_at_most(1020).on(:create)
     end
   end
 end
