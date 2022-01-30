@@ -136,5 +136,9 @@ RSpec.describe Organization, type: :model do
     it "cannot have an name longer than 255 chars" do
       organization.should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
     end
+
+    it "cannot have a non unique name" do 
+      organization.should validate_uniqueness_of(:name).case_insensitive
+    end
   end
 end
