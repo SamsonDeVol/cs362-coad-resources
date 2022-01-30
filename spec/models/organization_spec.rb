@@ -160,4 +160,10 @@ RSpec.describe Organization, type: :model do
       expect(organization).to validate_length_of(:description).is_at_most(1020).on(:create)
     end
   end
+
+  describe "enums" do
+    it "cannot have an invalid stauts selection" do
+      expect(organization).to define_enum_for(:status)
+    end
+  end
 end
