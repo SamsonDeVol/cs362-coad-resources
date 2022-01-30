@@ -93,31 +93,31 @@ RSpec.describe Organization, type: :model do
 
   describe "validations" do
     it "is invalid without an email" do
-      expect(organization).to validate_presence_of(:email)
+      organization.should validate_presence_of(:email)
     end
 
     it "is invalid without a name" do
-      expect(organization).to validate_presence_of(:name)
+      organization.should validate_presence_of(:name)
     end
 
     it "is invalid without a phone" do
-      expect(organization).to validate_presence_of(:phone)
+      organization.should validate_presence_of(:phone)
     end
 
     it "is invalid without a status" do
-      expect(organization).to validate_presence_of(:status)
+      organization.should validate_presence_of(:status)
     end
 
     it "is invalid without a primary name" do
-      expect(organization).to validate_presence_of(:primary_name)
+      organization.should validate_presence_of(:primary_name)
     end
 
     it "is invalid without a secondary name" do
-      expect(organization).to validate_presence_of(:secondary_name)
+      organization.should validate_presence_of(:secondary_name)
     end
 
     it "is invalid without a secondary phone" do
-      expect(organization).to validate_presence_of(:secondary_phone)
+      organization.should validate_presence_of(:secondary_phone)
     end
 
     it "cannot have an email longer than 255 chars" do
