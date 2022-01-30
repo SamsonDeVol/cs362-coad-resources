@@ -165,5 +165,10 @@ RSpec.describe Organization, type: :model do
     it "cannot have an invalid stauts selection" do
       expect(organization).to define_enum_for(:status)
     end
+
+    it "cannot have an invalid stauts selection" do
+      expect(organization).to define_enum_for(:status).with([:approved, :submitted, :rejected, :locked])
+    end
+
   end
 end
