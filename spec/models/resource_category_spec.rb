@@ -20,6 +20,14 @@ RSpec.describe ResourceCategory, type: :model do
         it "has many tickets" do
             expect(ResourceCategory.new).to have_many(:tickets)
         end
+    end
 
+    describe "validations" do
+        it "cannot have a blank name" do
+            resCat = ResourceCategory.new(name: 'The Dogg Pound')
+            expect(resCat).to be_valid
+            resCat = ResourceCategory.new(name: nil)
+            expect(resCat).to_not be_valid
+        end
     end
 end
