@@ -106,6 +106,15 @@ RSpec.describe Organization, type: :model do
     end
   end
 
+  describe "#reject" do
+    it "sets status to rejected" do
+    organization.status = "approved"
+    expect(organization.status).not_to eq("rejected")
+    organization.reject
+    expect(organization.status).to eq("rejected")
+    end
+  end
+
   describe "validations" do
     it "is invalid without an email" do
       expect(organization).to validate_presence_of(:email)
@@ -163,7 +172,7 @@ RSpec.describe Organization, type: :model do
 
   describe "enums" do
     it "cannot have an invalid stauts selection" do
-      expect(organization).to define_enum_for(:status)
+      expect(organization).to define_enum_for(:status).with([:approved, :submitted, :rejected, :locked])
     end
 
     it "cannot have an invalid transportaion selection" do
