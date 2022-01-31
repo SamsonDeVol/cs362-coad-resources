@@ -29,5 +29,9 @@ RSpec.describe ResourceCategory, type: :model do
             resCat = ResourceCategory.new(name: nil)
             expect(resCat).to_not be_valid
         end
+
+        it "cannot have a name longer than 255 chars" do
+            expect(ResourceCategory.new).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+        end
     end
 end
