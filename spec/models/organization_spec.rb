@@ -115,6 +115,19 @@ RSpec.describe Organization, type: :model do
     end
   end
 
+  describe "#set_default_status" do
+    it "sets status to submitted by default" do
+      organization.status = nil
+      expect(organization.status).to be_nil
+      organization.set_default_status
+      expect(organization.status).to eq("submitted")
+      organization.status = "approved"
+      expect(organization.status).to eq("approved")
+      organization.set_default_status
+      expect(organization.status).to eq("approved")
+    end
+  end
+
   describe "validations" do
     it "is invalid without an email" do
       expect(organization).to validate_presence_of(:email)
