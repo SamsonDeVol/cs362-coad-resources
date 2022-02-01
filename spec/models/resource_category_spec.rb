@@ -72,4 +72,11 @@ RSpec.describe ResourceCategory, type: :model do
       end
     end
 
+    describe "#to_s" do
+      it "must return the name" do
+        resource_category = ResourceCategory.new(name: "All Game No Gimmicks")
+        expect(resource_category.to_s).to eq(resource_category.name)
+      end
+    end
+
 end
