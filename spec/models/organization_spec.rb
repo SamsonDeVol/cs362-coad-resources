@@ -1,20 +1,8 @@
 require 'rails_helper'
 RSpec.describe Organization, type: :model do
 
-  let (:organization) {
-    Organization.new(name: "fake name",
-      status: 1, 
-      phone: "1111111111",
-      email: 'fake@email.com',
-      description: "describe it",
-      rejection_reason: "reason",
-      liability_insurance: false,
-      primary_name: "prime_name",
-      secondary_name: "sec_name",
-      secondary_phone: "2222222222",
-      title: "atitle",
-      transportation: 1)
-  }
+  let (:organization) { build_stubbed(:organization) }
+  
 
   describe "attributes" do
     it "has a name" do
@@ -167,6 +155,7 @@ RSpec.describe Organization, type: :model do
     end
 
     it "cannot have a non unique email" do 
+      organization = Organization.new(email: "unique_email@email.com")
       expect(organization).to validate_uniqueness_of(:email).case_insensitive
     end
 
@@ -175,6 +164,7 @@ RSpec.describe Organization, type: :model do
     end
 
     it "cannot have a non unique name" do 
+      organization = Organization.new(name: "Unique Name")
       expect(organization).to validate_uniqueness_of(:name).case_insensitive
     end
 
