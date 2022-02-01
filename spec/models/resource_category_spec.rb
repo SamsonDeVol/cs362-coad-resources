@@ -79,4 +79,10 @@ RSpec.describe ResourceCategory, type: :model do
       end
     end
 
+    describe "::unspecified" do
+      it "must return a ResourceCategory with the name 'Unspecified'" do
+        resource_category = ResourceCategory.unspecified
+        expect(resource_category.name).to eq("Unspecified")
+      end
+    end
 end
