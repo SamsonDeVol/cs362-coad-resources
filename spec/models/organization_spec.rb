@@ -155,6 +155,7 @@ RSpec.describe Organization, type: :model do
     end
 
     it "cannot have a non unique email" do 
+      organization = Organization.new(email: "unique_email@email.com")
       expect(organization).to validate_uniqueness_of(:email).case_insensitive
     end
 
@@ -163,6 +164,7 @@ RSpec.describe Organization, type: :model do
     end
 
     it "cannot have a non unique name" do 
+      organization = Organization.new(name: "Unique Name")
       expect(organization).to validate_uniqueness_of(:name).case_insensitive
     end
 
