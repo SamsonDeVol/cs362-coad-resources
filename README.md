@@ -27,6 +27,11 @@ gem install bundler
 bundle install
 ```
 
+Aside: you may need to manually install the factory bot gem using: 
+```
+gem install factory_bot_rails
+~~~
+
 Next set up the local environment by:
 
 ```
