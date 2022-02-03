@@ -2,28 +2,25 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
     
-    describe "attributes" do
+    let (:resource_category) { build_stubbed(:resource_category)}
 
-      it "makes facotry" do 
-        rc = build(:resource_category)
-      end
-      
+    describe "attributes" do
       it "has a name" do
-          expect(ResourceCategory.new).to respond_to(:name)
+          expect(resource_category).to respond_to(:name)
       end
 
       it "has a boolean, active" do
-          expect(ResourceCategory.new).to respond_to(:active)
+          expect(resource_category).to respond_to(:active)
       end
     end
     
     describe "associations" do
       it "has and belongs to many organizations" do
-        expect(ResourceCategory.new).to have_and_belong_to_many(:organizations)
+        expect(resource_category).to have_and_belong_to_many(:organizations)
       end
 
       it "has many tickets" do
-        expect(ResourceCategory.new).to have_many(:tickets)
+        expect(resource_category).to have_many(:tickets)
       end
     end
 
