@@ -87,19 +87,19 @@ RSpec.describe Organization, type: :model do
 
   describe "#approve" do
     it "sets status to approved" do
-    organization.status = "rejected"
-    expect(organization.status).to eq("rejected")
-    organization.approve
-    expect(organization.status).to eq("approved")
+      organization.status = "rejected"
+      expect(organization.status).to eq("rejected")
+      organization.approve
+      expect(organization.status).to eq("approved")
     end
   end
 
   describe "#reject" do
     it "sets status to rejected" do
-    organization.status = "approved"
-    expect(organization.status).not_to eq("rejected")
-    organization.reject
-    expect(organization.status).to eq("rejected")
+      organization.status = "approved"
+      expect(organization.status).not_to eq("rejected")
+      organization.reject
+      expect(organization.status).to eq("rejected")
     end
   end
 
