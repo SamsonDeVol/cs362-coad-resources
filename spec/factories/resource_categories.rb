@@ -6,5 +6,8 @@ FactoryBot.define do
       name { "fake inactive name" }
       active { false }
     end
+
+    factory :unspecified do
+    end
   end
 end
