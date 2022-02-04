@@ -87,7 +87,7 @@ RSpec.describe ResourceCategory, type: :model do
         expect(resource_category.name).to eq("Unspecified")
       end
     end
-      
+    
     describe "#active" do
       it "returns list of active Resource Categories" do
         inactive_cat = create(:not_active)
@@ -96,5 +96,15 @@ RSpec.describe ResourceCategory, type: :model do
         active_cat = create(:resource_category) 
         expect(active_ResourceCats.any?).to be_truthy 
       end
+    end
+
+    describe "#inactive" do 
+      it "returns list of inactive Resource Categories" do
+        active_cat = create(:resource_category) 
+        active_ResourceCats = ResourceCategory.inactive
+        expect(active_ResourceCats.any?).to be_falsey
+        inactive_cat = create(:not_active)
+        expect(active_ResourceCats.any?).to be_truthy
+      end 
     end
 end
