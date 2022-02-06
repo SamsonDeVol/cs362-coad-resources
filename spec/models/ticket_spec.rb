@@ -49,5 +49,9 @@ RSpec.describe Ticket, type: :model do
     it "must have a region_id" do
       expect(ticket).to validate_presence_of(:resource_category_id)
     end
+
+    it "cannot have a name longer than 255 chars" do
+      expect(ticket).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+    end
   end
 end
