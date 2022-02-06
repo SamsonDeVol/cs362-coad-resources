@@ -57,5 +57,12 @@ RSpec.describe Ticket, type: :model do
     it "cannot have a name longer than 255 chars" do
       expect(ticket).to validate_length_of(:description).is_at_most(1020).on(:create)
     end
+
+    it "must have a valid phone number" do
+      expect(ticket).to allow_value("1 541 555 1454").for(:phone)
+      expect(ticket).to_not allow_value("41 555 1454").for(:phone)
+      expect(ticket).to_not allow_value("1 541 AAA 1454").for(:phone)
+      expect(ticket).to_not allow_value("1 541 5-5 14+4").for(:phone)
+    end
   end
 end
