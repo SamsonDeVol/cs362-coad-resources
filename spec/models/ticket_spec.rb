@@ -16,5 +16,9 @@ RSpec.describe Ticket, type: :model do
     it "has a phone" do
         expect(ticket).to respond_to(:phone)
     end
+
+    it "has a boolean, closed" do
+        expect(ticket).to respond_to(:closed)
+    end
   end
 end
