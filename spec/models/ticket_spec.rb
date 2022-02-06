@@ -35,4 +35,19 @@ RSpec.describe Ticket, type: :model do
       expect(ticket).to belong_to(:organization)
     end
   end
+
+  describe "validations" do
+    it "must have a name" do
+      expect(ticket).to validate_presence_of(:name)
+    end
+    it "must have a phone" do
+      expect(ticket).to validate_presence_of(:phone)
+    end
+    it "must have a region_id" do
+      expect(ticket).to validate_presence_of(:region_id)
+    end
+    it "must have a region_id" do
+      expect(ticket).to validate_presence_of(:resource_category_id)
+    end
+  end
 end
