@@ -21,4 +21,10 @@ RSpec.describe Ticket, type: :model do
         expect(ticket).to respond_to(:closed)
     end
   end
+
+  describe "attributes" do
+    it "belongs to a region" do
+      expect(ticket).to belong_to(:region)
+    end
+  end
 end
