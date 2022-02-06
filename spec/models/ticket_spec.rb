@@ -46,7 +46,7 @@ RSpec.describe Ticket, type: :model do
     it "must have a region_id" do
       expect(ticket).to validate_presence_of(:region_id)
     end
-    it "must have a region_id" do
+    it "must have a resource_category_id" do
       expect(ticket).to validate_presence_of(:resource_category_id)
     end
 
