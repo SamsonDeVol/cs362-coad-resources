@@ -22,7 +22,7 @@ RSpec.describe Ticket, type: :model do
     end
   end
 
-  describe "attributes" do
+  describe "associations" do
     it "belongs to a region" do
       expect(ticket).to belong_to(:region)
     end
