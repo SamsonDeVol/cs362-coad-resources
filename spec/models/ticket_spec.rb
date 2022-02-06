@@ -12,5 +12,9 @@ RSpec.describe Ticket, type: :model do
     it "has a description" do
         expect(ticket).to respond_to(:description)
     end
+
+    it "has a phone" do
+        expect(ticket).to respond_to(:phone)
+    end
   end
 end
