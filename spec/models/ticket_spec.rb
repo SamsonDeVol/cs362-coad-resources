@@ -10,21 +10,25 @@ RSpec.describe Ticket, type: :model do
     end
 
     it "has a description" do
-        expect(ticket).to respond_to(:description)
+      expect(ticket).to respond_to(:description)
     end
 
     it "has a phone" do
-        expect(ticket).to respond_to(:phone)
+      expect(ticket).to respond_to(:phone)
     end
 
     it "has a boolean, closed" do
-        expect(ticket).to respond_to(:closed)
+      expect(ticket).to respond_to(:closed)
     end
   end
 
   describe "attributes" do
     it "belongs to a region" do
       expect(ticket).to belong_to(:region)
+    end
+    
+    it "belongs to a resource category" do
+      expect(ticket).to belong_to(:resource_category)
     end
   end
 end
