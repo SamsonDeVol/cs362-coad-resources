@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
   let (:user) { build_stubbed(:user)}
 
   describe "attributes" do
-    it "exists" do
-      expect(user).to be_valid
+    it "has an email" do
+      expect(user).to respond_to(:email)
     end
   end
 end
