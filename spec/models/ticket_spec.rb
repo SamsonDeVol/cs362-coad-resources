@@ -65,4 +65,22 @@ RSpec.describe Ticket, type: :model do
       expect(ticket).to_not allow_value("1 541 5-5 14+4").for(:phone)
     end
   end
+
+  describe "Scope Methods" do
+    describe "#open" do
+      it "returns array of unclaimed, open tickets" do
+        closed_ticket = create(:ticket,
+        resource_category: create(:resource_category, name: "f1"),
+        region: create(:region, name: "f1"), closed: true)
+
+        open_ticket = create(:ticket,
+        resource_category: create(:resource_category, name: "f2"),
+        region: create(:region, name: "f2"))
+
+        tickets = Ticket.open
+        expect(tickets).to include(open_ticket)
+        expect(tickets).to_not include(closed_ticket)
+      end
+    end
+  end
 end
