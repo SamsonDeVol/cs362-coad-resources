@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Ticket, type: :model do
 
   let (:ticket) { build_stubbed(:ticket) }
+  let (:resource_category) { create(:resource_category)}
+  let (:region) { create(:region)}
 
   describe "attributes" do
     it "has a name" do
@@ -80,6 +82,13 @@ RSpec.describe Ticket, type: :model do
         tickets = Ticket.open
         expect(tickets).to include(open_ticket)
         expect(tickets).to_not include(closed_ticket)
+      end
+    end
+    describe "#closed" do
+      it "returns only closed tickets" do
+        closed_ticket = create(:ticket, resource_category: resource_category, region: region, closed: true)
+        expect(Ticket.closed).to include(closed_ticket)
+        expect(Ticket.closed).to_not include(ticket)
       end
     end
   end
