@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 
-  let (:ticket) { build_stubbed(:ticket) }
+  let (:ticket) { build(:ticket) }
   let (:resource_category) { create(:resource_category)}
   let (:region) { create(:region)}
 
@@ -69,6 +69,7 @@ RSpec.describe Ticket, type: :model do
   end
 
   describe "Scope Methods" do
+
     describe "#open" do
       it "returns array of unclaimed, open tickets" do
         closed_ticket = create(:ticket,
@@ -84,6 +85,7 @@ RSpec.describe Ticket, type: :model do
         expect(tickets).to_not include(closed_ticket)
       end
     end
+
     describe "#closed" do
       it "returns only closed tickets" do
         closed_ticket = create(:ticket, resource_category: resource_category, region: region, closed: true)
@@ -91,5 +93,13 @@ RSpec.describe Ticket, type: :model do
         expect(Ticket.closed).to_not include(ticket)
       end
     end
+
+    describe "#all_organization" do
+      it "returns tickets that are open and have a non nil organization_id" do
+        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1)
+        expect(Ticket.all_organization).to include(ticket)
+      end
+    end
+
   end
 end
