@@ -101,5 +101,12 @@ RSpec.describe Ticket, type: :model do
       end
     end
 
+    describe "#organization" do
+      it "returns tickets that are open and have a specific organization id" do
+        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1)
+        expect(Ticket.organization(1)).to include(ticket)
+      end
+    end
+
   end
 end
