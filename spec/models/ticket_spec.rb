@@ -99,6 +99,16 @@ RSpec.describe Ticket, type: :model do
         ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1)
         expect(Ticket.all_organization).to include(ticket)
       end
+
+      it "doesn't return tickets that are closed" do
+        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1, closed: true)
+        expect(Ticket.all_organization).to_not include(ticket)
+      end
+
+      it "doesn't return tickets that have a nil organization_id" do
+        ticket = create(:ticket, resource_category: resource_category, region: region)
+        expect(Ticket.all_organization).to_not include(ticket)
+      end
     end
 
     describe "#organization" do
@@ -117,6 +127,5 @@ RSpec.describe Ticket, type: :model do
         expect(Ticket.organization(1)).to_not include(ticket)
       end
     end
-
   end
 end
