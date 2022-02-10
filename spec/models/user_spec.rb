@@ -34,5 +34,9 @@ RSpec.describe User, type: :model do
       expect(user).to_not allow_value('fakeemail.com').for(:email).on(:create)
     end
 
+    it "has a unique email" do
+      user = User.new(email: "unique@email.com")
+      expect(user).to validate_uniqueness_of(:email).case_insensitive
+    end
   end
 end
