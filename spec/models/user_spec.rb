@@ -19,4 +19,10 @@ RSpec.describe User, type: :model do
       expect(user).to belong_to(:organization)
     end
   end
+
+  describe "validations" do
+    it "has an email" do
+      expect(user).to validate_presence_of(:email)
+    end
+  end
 end
