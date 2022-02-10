@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Ticket, type: :model do
 
   let (:ticket) { build(:ticket) }
-  let (:resource_category) { create(:resource_category)}
-  let (:region) { create(:region)}
+  let (:resource_category) { build_stubbed(:resource_category)}
+  let (:region) { build_stubbed(:region)}
 
   describe "attributes" do
     it "has a name" do
@@ -125,6 +125,23 @@ RSpec.describe Ticket, type: :model do
       it "doesn't return a ticket with a nil organization id" do
         ticket = create(:ticket, resource_category: resource_category, region: region, closed: true)
         expect(Ticket.organization(1)).to_not include(ticket)
+      end
+    end
+
+    describe "#closed_organization" do
+      it "returns tickets that are closed and have a specific organization id" do
+        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1, closed: true)
+        expect(Ticket.closed_organization(1)).to include(ticket)
+      end
+
+      it "doesn't return a ticket that is open" do
+        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1)
+        expect(Ticket.closed_organization(1)).to_not include(ticket)
+      end
+
+      it "doesn't return a ticket with a nil organization id" do
+        ticket = create(:ticket, resource_category: resource_category, region: region)
+        expect(Ticket.closed_organization(1)).to_not include(ticket)
       end
     end
   end
