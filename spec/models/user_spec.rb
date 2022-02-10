@@ -34,5 +34,17 @@ RSpec.describe User, type: :model do
       expect(user).to_not allow_value('fakeemail.com').for(:email).on(:create)
     end
 
+    it "has a unique email" do
+      user = User.new(email: "unique@email.com")
+      expect(user).to validate_uniqueness_of(:email).case_insensitive
+    end
+
+    it "has a password" do
+      expect(user).to validate_presence_of(:password).on(:create)
+    end
+
+    it "has a password between 7 and 255 chars" do
+      expect(user).to validate_length_of(:password).is_at_least(7).is_at_most(255).on(:create)
+    end
   end
 end
