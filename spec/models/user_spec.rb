@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    it "belonds to an organization" do
+    it "belongs to an organization" do
       expect(user).to belong_to(:organization)
     end
   end
