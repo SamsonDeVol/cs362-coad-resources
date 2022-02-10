@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 
-  let (:ticket) { build(:ticket) }
   let (:resource_category) { build_stubbed(:resource_category)}
   let (:region) { build_stubbed(:region)}
+  let (:ticket) { build(:ticket) }
 
   describe "attributes" do
     it "has a name" do
@@ -88,7 +88,7 @@ RSpec.describe Ticket, type: :model do
 
     describe "#closed" do
       it "returns only closed tickets" do
-        closed_ticket = create(:ticket, resource_category: resource_category, region: region, closed: true)
+        closed_ticket = create(:ticket, closed: true)
         expect(Ticket.closed).to include(closed_ticket)
         expect(Ticket.closed).to_not include(ticket)
       end
@@ -96,51 +96,51 @@ RSpec.describe Ticket, type: :model do
 
     describe "#all_organization" do
       it "returns tickets that are open and have a non nil organization_id" do
-        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1)
+        ticket = create(:ticket, organization_id: 1)
         expect(Ticket.all_organization).to include(ticket)
       end
 
       it "doesn't return tickets that are closed" do
-        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1, closed: true)
+        ticket = create(:ticket, organization_id: 1, closed: true)
         expect(Ticket.all_organization).to_not include(ticket)
       end
 
       it "doesn't return tickets that have a nil organization_id" do
-        ticket = create(:ticket, resource_category: resource_category, region: region)
+        ticket = create(:ticket)
         expect(Ticket.all_organization).to_not include(ticket)
       end
     end
 
     describe "#organization" do
       it "returns tickets that are open and have a specific organization id" do
-        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1)
+        ticket = create(:ticket, organization_id: 1)
         expect(Ticket.organization(1)).to include(ticket)
       end
 
       it "doesn't return a ticket that is closed" do
-        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1, closed: true)
+        ticket = create(:ticket, organization_id: 1, closed: true)
         expect(Ticket.organization(1)).to_not include(ticket)
       end
 
       it "doesn't return a ticket with a nil organization id" do
-        ticket = create(:ticket, resource_category: resource_category, region: region, closed: true)
+        ticket = create(:ticket, closed: true)
         expect(Ticket.organization(1)).to_not include(ticket)
       end
     end
 
     describe "#closed_organization" do
       it "returns tickets that are closed and have a specific organization id" do
-        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1, closed: true)
+        ticket = create(:ticket, organization_id: 1, closed: true)
         expect(Ticket.closed_organization(1)).to include(ticket)
       end
 
       it "doesn't return a ticket that is open" do
-        ticket = create(:ticket, resource_category: resource_category, region: region, organization_id: 1)
+        ticket = create(:ticket, organization_id: 1)
         expect(Ticket.closed_organization(1)).to_not include(ticket)
       end
 
       it "doesn't return a ticket with a nil organization id" do
-        ticket = create(:ticket, resource_category: resource_category, region: region)
+        ticket = create(:ticket)
         expect(Ticket.closed_organization(1)).to_not include(ticket)
       end
     end

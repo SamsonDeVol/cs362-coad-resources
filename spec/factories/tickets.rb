@@ -4,6 +4,8 @@ FactoryBot.define do
     description { "fake description" }
     phone { "15555555555" }
     closed { false }
+    resource_category 
+    region
     organization { nil }
   end
 end
