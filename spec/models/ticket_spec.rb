@@ -154,5 +154,15 @@ RSpec.describe Ticket, type: :model do
         expect(Ticket.region(region.id)).to_not include(ticket2)
       end
     end
+
+    describe "#resource_category" do
+      it "returns tickets that are associated with a specific resource_category id" do
+        ticket = create(:ticket, resource_category: resource_category, region: region)
+        resource_category2 = ResourceCategory.create(name: "ftpcsftu")
+        ticket2 = create(:ticket, resource_category: resource_category2, region: region)
+        expect(Ticket.resource_category(resource_category.id)).to include(ticket)
+        expect(Ticket.resource_category(resource_category.id)).to_not include(ticket2)
+      end
+    end
   end
 end
