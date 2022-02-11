@@ -173,4 +173,12 @@ RSpec.describe Ticket, type: :model do
       expect(ticket.open?).to be_falsey
     end
   end
+
+  describe "#captured?" do
+    it "checks if the ticket is claimed by an organization" do
+      expect(ticket.captured?).to be_falsey
+      ticket.organization = build_stubbed(:organization)
+      expect(ticket.captured?).to be_truthy
+    end
+  end
 end
