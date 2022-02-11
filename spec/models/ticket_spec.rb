@@ -165,4 +165,12 @@ RSpec.describe Ticket, type: :model do
       end
     end
   end
+
+  describe "#open?" do
+    it "checks if the ticket is open" do
+      expect(ticket.open?).to be_truthy
+      ticket.closed = true
+      expect(ticket.open?).to be_falsey
+    end
+  end
 end
