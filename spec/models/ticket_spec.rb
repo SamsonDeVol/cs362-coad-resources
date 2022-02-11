@@ -73,12 +73,12 @@ RSpec.describe Ticket, type: :model do
     describe "#open" do
       it "returns array of unclaimed, open tickets" do
         closed_ticket = create(:ticket,
-        resource_category: create(:resource_category, name: "f1"),
-        region: create(:region, name: "f1"), closed: true)
+        resource_category: resource_category,
+        region: region, closed: true)
 
         open_ticket = create(:ticket,
-        resource_category: create(:resource_category, name: "f2"),
-        region: create(:region, name: "f2"))
+        resource_category: resource_category,
+        region: region)
 
         tickets = Ticket.open
         expect(tickets).to include(open_ticket)
@@ -142,6 +142,16 @@ RSpec.describe Ticket, type: :model do
       it "doesn't return a ticket with a nil organization id" do
         ticket = create(:ticket, resource_category: resource_category, region: region)
         expect(Ticket.closed_organization(1)).to_not include(ticket)
+      end
+    end
+    
+    describe "#region" do
+      it "returns tickets that are associated with a specific region id" do
+        ticket = create(:ticket, resource_category: resource_category, region: region)
+        region2 = Region.create(name: "ftpcsftu")
+        ticket2 = create(:ticket, resource_category: resource_category, region: region2)
+        expect(Ticket.region(region.id)).to include(ticket)
+        expect(Ticket.region(region.id)).to_not include(ticket2)
       end
     end
   end
