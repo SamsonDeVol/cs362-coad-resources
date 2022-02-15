@@ -48,6 +48,18 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#set_default_role" do
+    it "sets status to organization by default" do
+      user.role = nil
+      expect(user.role).to be_nil
+      user.set_default_role
+      expect(user.role).to eq("organization")
+      user.role = "admin"
+      user.set_default_role
+      expect(user.role).to_not eq("organization")
+    end
+  end
+  
   describe "#to_s" do
     it "returns the email" do
       expect(user.to_s).to eq(user.email)
