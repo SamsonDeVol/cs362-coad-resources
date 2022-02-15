@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let (:user) { build_stubbed(:user)}
+  let (:user) { build(:user)}
 
   describe "attributes" do
     it "has an email" do
@@ -46,5 +46,11 @@ RSpec.describe User, type: :model do
     it "has a password between 7 and 255 chars" do
       expect(user).to validate_length_of(:password).is_at_least(7).is_at_most(255).on(:create)
     end
+  end
+
+  describe "#to_s" do
+    it "returns the email" do
+      expect(user.to_s).to eq(user.email)
+    end 
   end
 end
