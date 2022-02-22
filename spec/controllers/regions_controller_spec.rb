@@ -11,6 +11,9 @@ RSpec.describe RegionsController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
       get :new
       expect(response).to redirect_to(new_user_session_path)
+      post :create
+      expect(response).to redirect_to(new_user_session_path)
+
     end
   end
 
@@ -21,7 +24,10 @@ RSpec.describe RegionsController, type: :controller do
 #     end
 
 #     it "redirects to the sign in screen" do
-#       sign_in(create(:user)).
+        # organization_user = create(:user)
+        # organization_user.confirm
+        # organization_user.save
+
 #       get :index
 #       expect(response).to redirect_to(dashboard_path)
 #     end
