@@ -14,6 +14,10 @@ RSpec.describe ResourceCategoriesController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
       get :edit, params: {id: 'FAKE'}
       expect(response).to redirect_to(new_user_session_path)
+      patch :update, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)
+      put :update, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 end
