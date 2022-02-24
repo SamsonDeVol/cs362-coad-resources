@@ -11,6 +11,8 @@ RSpec.describe OrganizationsController, type: :controller do
             expect(response).to redirect_to(new_user_session_path)
             post :create
             expect(response).to redirect_to(new_user_session_path)
+            get :edit, params: {id: 'FAKE'}
+            expect(response).to redirect_to(new_user_session_path)
         end
     end
 end
