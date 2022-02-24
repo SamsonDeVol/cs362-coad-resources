@@ -42,6 +42,10 @@ RSpec.describe ResourceCategoriesController, type: :controller do
       expect(response).to redirect_to(dashboard_path)
       get :edit, params: {id: 'FAKE'}
       expect(response).to redirect_to(dashboard_path)
+      patch :update, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
+      put :update, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
