@@ -44,6 +44,8 @@ RSpec.describe RegionsController, type: :controller do
       expect(response).to redirect_to(dashboard_path)
       put :update, params: {id: 'FAKE'}
       expect(response).to redirect_to(dashboard_path)
+      delete :destroy, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
