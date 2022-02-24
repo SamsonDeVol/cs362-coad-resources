@@ -38,6 +38,8 @@ RSpec.describe ResourceCategoriesController, type: :controller do
       expect(response).to redirect_to(dashboard_path)
       get :new
       expect(response).to redirect_to(dashboard_path)
+      post :create
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
