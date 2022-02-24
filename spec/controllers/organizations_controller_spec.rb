@@ -21,6 +21,8 @@ RSpec.describe OrganizationsController, type: :controller do
             expect(response).to redirect_to(new_user_session_path)
             post :approve, params: {id: 'FAKE'}
             expect(response).to redirect_to(new_user_session_path)
+            post :reject, params: {id: 'FAKE'}
+            expect(response).to redirect_to(new_user_session_path)
         end
     end
 end
