@@ -24,19 +24,14 @@ RSpec.describe RegionsController, type: :controller do
     end
   end
 
-#   describe "an organization user" do
-#     before do
-#       allow(controller).to receive(:current_user).and_return(create(:user, :organization))
-#       allow(controller).to receive(:user_signed_in?).and_return(true)
-#     end
+  describe "an organization user" do
+    it "redirects to the dashboard" do
+      organization_user = create(:user)
+      organization_user.confirm
+      sign_in(organization_user)
 
-#     it "redirects to the sign in screen" do
-        # organization_user = create(:user)
-        # organization_user.confirm
-        # organization_user.save
-
-#       get :index
-#       expect(response).to redirect_to(dashboard_path)
-#     end
-#   end
+      get :index
+      expect(response).to redirect_to(dashboard_path)
+    end
+  end
 end
