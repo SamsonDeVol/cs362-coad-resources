@@ -34,6 +34,8 @@ RSpec.describe RegionsController, type: :controller do
       expect(response).to redirect_to(dashboard_path)
       get :show, params: {id: 'FAKE'}
       expect(response).to redirect_to(dashboard_path)
+      get :new
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
