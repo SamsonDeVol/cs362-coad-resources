@@ -6,7 +6,8 @@ RSpec.describe TicketsController, type: :controller do
         it "redirects to dashboard" do
           get :show, params: {id: 'FAKE'}
           expect(response).to redirect_to(dashboard_path)
-          # post :capture, params: {id: 'FAKE'}
+          post :capture, params: {id: 'FAKE'}
+          expect(response).to redirect_to(dashboard_path)
           # post :release, params: {id: 'FAKE'}
           # patch :close, params: {id: 'FAKE'}
           # delete :destroy, params: {id: 'FAKE'}
