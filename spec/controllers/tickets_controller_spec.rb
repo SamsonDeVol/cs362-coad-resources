@@ -10,7 +10,8 @@ RSpec.describe TicketsController, type: :controller do
           expect(response).to redirect_to(dashboard_path)
           post :release, params: {id: 'FAKE'}
           expect(response).to redirect_to(dashboard_path)
-          # patch :close, params: {id: 'FAKE'}
+          patch :close, params: {id: 'FAKE'}
+          expect(response).to redirect_to(dashboard_path)
           # delete :destroy, params: {id: 'FAKE'}
         end
       end
