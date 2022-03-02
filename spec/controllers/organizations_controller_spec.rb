@@ -53,6 +53,8 @@ RSpec.describe OrganizationsController, type: :controller do
     
             get :edit, params: {id: 'FAKE'}
             expect(response).to redirect_to(dashboard_path)
+            patch :update, params: {id: 'FAKE'}
+            expect(response).to redirect_to(dashboard_path)
         end
     end
 end
