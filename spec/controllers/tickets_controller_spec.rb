@@ -41,6 +41,8 @@ RSpec.describe TicketsController, type: :controller do
         expect(response).to redirect_to(dashboard_path)
         post :capture, params: {id: 'FAKE'}
         expect(response).to redirect_to(dashboard_path)
+        post :release, params: {id: 'FAKE'}
+        expect(response).to redirect_to(dashboard_path)
       end
     end
 end
