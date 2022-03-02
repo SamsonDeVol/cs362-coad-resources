@@ -29,6 +29,7 @@ RSpec.describe TicketsController, type: :controller do
         expect(response).to redirect_to(dashboard_path)
       end
     end
+    
     describe "an unapproved organization user" do
       it "redirects to the dashboard" do
         organization_user = create(:user)

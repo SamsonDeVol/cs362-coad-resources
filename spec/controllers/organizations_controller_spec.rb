@@ -29,10 +29,12 @@ RSpec.describe OrganizationsController, type: :controller do
         it "redirects to the dashboard" do
             organization_user = create(:user)
             organization_user.confirm
+            organization_user.organization.approve
+            organization_user.organization.save!
             sign_in(organization_user)
     
-            # post :create
-            # expect(response).to redirect_to(dashboard_path)
+            get :new 
+            expect(response).to redirect_to(dashboard_path)
         end
     end
 end
