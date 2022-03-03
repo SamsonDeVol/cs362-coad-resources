@@ -4,5 +4,9 @@ FactoryBot.define do
     password { "fakepassword" }
     role { "organization" }
     organization
+
+    factory :admin_user do
+      role { "admin" }
+    end
   end
 end
