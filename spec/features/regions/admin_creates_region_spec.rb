@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a Region', type: :feature do
 
-    scenario "with valid attributes suceeds" do
+    scenario "with valid attributes succeeds" do
         admin_user = create(:admin_user)
         admin_user.confirm
         log_in_as(admin_user)
