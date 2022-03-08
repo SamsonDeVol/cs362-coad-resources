@@ -11,7 +11,6 @@ RSpec.describe 'Creating an Organization Application', type: :feature do
     admin_user.confirm
     log_in_as(new_user)
     visit '/new_organization_application'
-    expect(page).to have_text "Partner Organization Application"
     choose 'organization_liability_insurance_true'
     choose 'organization_agreement_one_true'
     choose 'organization_agreement_two_true'
@@ -31,6 +30,19 @@ RSpec.describe 'Creating an Organization Application', type: :feature do
     choose 'organization_transportation_yes'
     click_on 'Apply'
     expect(page).to have_text 'Application Submitted'
-    
+  end
+
+  scenario "with invalid attributes shows an error message" do
+    new_user = create(:user)
+    new_user.organization = nil
+    new_user.confirm
+    # admin user needed for email sent when click_on 'Apply'
+    admin_user = create(:admin_user)
+    admin_user.confirm
+    log_in_as(new_user)
+    visit '/new_organization_application'
+    choose 'organization_liability_insurance_true'
+    click_on 'Apply'
+    expect(page).to have_text "Email can't be blank"
   end
 end
